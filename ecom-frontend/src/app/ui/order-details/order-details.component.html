@@ -1,0 +1,33 @@
+<div class="p-3">
+  <div class="card" *ngIf="orderDetails">
+    <div class="card-header">Order Details : {{orderId}}</div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item">Date : {{orderDetails.localDate}}</li>
+        <li class="list-group-item">State : {{orderDetails.ordreState}}</li>
+      </ul>
+      <table class="table">
+        <thead>
+        <tr><th >ID</th><th> Product Name</th><th >Price</th><th >Quantity</th><th>Amnout</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let pi of orderDetails.productItemList">
+          <td>{{pi?.id}}</td>
+          <td>{{pi?.product?.name}}</td>
+          <td>{{pi?.price}}</td>
+          <td>{{pi?.quantity}}</td>
+          <td>{{pi?.quantity * pi.price | number :'0.2-2'}}</td>
+
+        </tr>
+        <tr class=" bg bg-dark">
+          <td colspan="4">Total</td>
+          <td>{{getTotal(orderDetails)| number :'0.2-2'}}</td>
+        </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
